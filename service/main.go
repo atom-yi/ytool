@@ -1,7 +1,9 @@
 package main
 
 import (
+	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
+
 	"log"
 	"net/http"
 	"ytool/router"
@@ -10,6 +12,7 @@ import (
 func main() {
 	r := gin.Default()
 	r.Use(Cors())
+	r.Use(static.Serve("/", static.LocalFile("./webapp", true)))
 	router.InitRouter(r)
 
 	log.Println("start server...")
