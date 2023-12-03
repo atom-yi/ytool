@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from "vue";
 import api from "../api";
+import {message} from "ant-design-vue";
 
 const indent = ref("  ");
 const input = ref("");
@@ -48,6 +49,7 @@ function formatJson() {
     <a-col :span="12">
       <h2>输出：</h2>
       <a-textarea
+          v-if="output !== ''"
           placeholder="结果"
           v-model:value="output"
           :show-count="true"
